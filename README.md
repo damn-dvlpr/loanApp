@@ -10,15 +10,15 @@ This also maintains various stats for the benefit of the Proprietor.
 
 ## Installation
 
-1.Clone/download this repository. 
+1.Clone/download this repository.
 
-2. You need to have Node.js and npm installed, hence to do so, run the following command:
+2.You need to have Node.js and npm installed, hence to do so, run the following command:
 
 ```sudo apt-get install nodejs```
 
 this shall install both Nodejs and npm.
 
-3. The application uses Mongodb for database management, hence install it using the following command:
+3.The application uses Mongodb for database management, hence install it using the following command:
 
 ```sudo apt-get install mongodb```
 
@@ -26,15 +26,15 @@ this shall install both Nodejs and npm.
 
 ## Using the Application
 
-1. Mongodb needs mongod service running, hence in a terminal, run the following command:
+1.Mongodb needs mongod service running, hence in a terminal, run the following command:
 
 ``` sudo mongod ```
 
-2. Goto the clone's folder and run the application using the following command:
+2.Goto the clone's folder and run the application using the following command:
 
 ``` node app.js ```
 
-3. The local server will start at port 3000, hence open your browser and goto the folowing URL:
+3.The local server will start at port 3000, hence open your browser and goto the folowing URL:
 
 >http://localhost:3000/
 
