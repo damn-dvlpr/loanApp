@@ -16,13 +16,13 @@ This also maintains various stats for the benefit of the Proprietor.
 
 ```sudo apt-get install nodejs```
 
-this shall install both Nodejs nad npm.
+this shall install both Nodejs and npm.
 
 3. The application uses Mongodb for database management, hence install it using the following command:
 
 ```sudo apt-get install mongodb```
 
-4. Go to the clone's folder and run command `npm install` to install all node-modules(depedencies) mentioned in the JSON file.
+4. Go to the clone's folder and run command `npm install` to install all node-modules(dependencies) mentioned in the JSON file.
 
 ## Using the Application
 
