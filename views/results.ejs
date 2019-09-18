@@ -1,0 +1,45 @@
+<% include partials/header.ejs %>
+    <% var x=0 %>
+    <div class="container">
+        <div style="text-align:center;"><h1 style="color:white;">Total number of results:<%= girvi.length %></h1>
+            <div class="row">
+                <% girvi.forEach(function(customer){ %>
+                    <% if(customer.isDelivered==false){ %>
+                        <div class="col-md-3">
+                            <div class="card text-center" style="margin-bottom:25px; text-transform:capitalize;">
+                                <% x=1 %>
+                                <div class="card-header bg-primary"><h5 style="color:white"><%= customer.name %></h5></div>
+                                <div class="card-body"><h6>Item type: <%= customer.item.toUpperCase() %></h6></div>
+                                <div class="card-footer">
+                                    <p>Submitted On:</p>
+                                    <%=customer.date.getFullYear() +"/" + (parseInt(customer.date.getMonth()) + 1) + "/" +customer.date.getDate() %>
+                                    <a href="/shop/<%= customer._id %>" style="text-decoration:none"><button class="btn btn-outline-info btn-sml btn-block">More Info..</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }%>
+                <% }); %>
+                <% girvi.forEach(function(customer){ %>
+                    <% if(customer.isDelivered==true){ %>
+                        <div class="col-md-3">
+                            <div class="card text-center" style="margin-bottom:25px; text-transform:capitalize;">
+                                <% x=1 %>
+                                <div class="card-header bg-danger"><h5><%= customer.name %></h5></div>
+                                <div class="card-body"><h6>Item type: <%= customer.item.toUpperCase() %></h6></div>
+                                <div class="card-footer">
+                                    <p>Submitted On:</p>
+                                    <%=customer.date.getFullYear() +"/" + (parseInt(customer.date.getMonth()) + 1) + "/" +customer.date.getDate() %>
+                                    <a href="/shop/<%= customer._id %>" style="text-decoration:none"><button class="btn btn-outline-info btn-sml btn-block">More Info..</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }%>
+                <% }); %>                
+            </div>
+        </div>
+        <% if(x==0){ %>
+            <h1 style="color:white;">No Data to Show!</h1>
+        <% } %>
+    </div>
+    
+<% include partials/footer.ejs %>

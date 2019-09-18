@@ -1,0 +1,76 @@
+<% include partials/header.ejs %>
+<div class="container mt-3 " style="color:white;">
+    <h1 class="text-center mb-4">Create a new Girvi</h1>
+    <div class="container" style="width:60%;">
+        <form action="/shop" method="POST" id="create">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" class="form-control" id="phone" name="phone" pattern="[0-9]{10}">
+            </div>
+            <div class="form-group">
+                <label for="metal">Metal:</label>
+                <select class="form-control" id="metal" name="metal" form="create" onchange="myFunction()">
+                    <option value="Gold">Gold</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Gold+Silver">Gold+Silver</option>
+                </select>
+            </div>
+            <!-- <div class="form-group">
+                <label for="item">Item type:</label>
+                <input type="text" class="form-control" id="item" name="item" required>
+            </div> -->
+            <div class="form-group">
+                <label for="item">Item type:</label>
+                <textarea class="form-control" id="item" name="item" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="weightGold">Weight of Gold(in grams):</label>
+                <input type="number" class="form-control" id="weightGold" name="weightGold" step="0.01" required>
+            </div>
+            <div class="form-group" id="optionalForm" style="display:none">
+                <label for="weightSilver">Weight of Silver(in grams):</label>
+                <input type="number" class="form-control" id="weightSilver" name="weightSilver" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="Number" class="form-control" id="amount" name="amount" required>
+            </div>
+            <div class="form-group">
+                <label for="rate">Rate of interest:</label>
+                <select class="form-control" id="rate" name="rate" form="create" required>
+                    <option value=3.00>3.00 %</option>
+                    <option value=2.75>2.75 %</option>
+                    <option value=2.50>2.50 %</option>
+                    <option value=5.00>5.00 %</option>
+                </select>
+                <!--<input type="number" class="form-control" id="rate" name="rate" step="0.25" required>-->
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="additionalInfo">Additional Information:</label>
+                <textarea class="form-control" id="additionalInfo" name="additionalInfo"></textarea>
+            </div>
+            <button class="btn btn-primary btn-block" type="Submit" for="create">Submit</button>
+        </form>
+    </div>
+</div>
+<script>
+    //script to toggle gold+silver case and show the weight of silver form
+    function myFunction(){
+        if(document.getElementById("metal").value=="Gold+Silver"){
+            document.getElementById("optionalForm").style.display="block";
+        }
+    }
+</script>
+<% include partials/footer.ejs %>

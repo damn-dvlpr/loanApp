@@ -1,0 +1,21 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Naimish",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "days360": "^2.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "indian-number-format": "^1.0.4",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.5.13"
+  }
+}

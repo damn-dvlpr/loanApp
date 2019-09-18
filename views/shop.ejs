@@ -1,0 +1,40 @@
+<% include partials/header.ejs %>
+    <% var totalGold=0 %>
+    <% var totalSilver=0 %>
+    <% var totalMoneyAtStake=0 %>
+    <div class="jumbotron container mt-3" style="color:gold; background-color:rgb(104,104,104,0.7); padding-bottom:38px;">
+        <h1 style="font-family: 'Great Vibes', cursive; font-size:90px;">Chandrika Jewellers & Bankers</h1>
+        <!--<h3>(Test Application!)</h3>-->
+        <h3 style="font-family: 'Cinzel', serif;">Chandrika Jewellers online portal!</h3>
+        <div class="float-right" id="totalGold" style="font-family: 'Signika Negative', sans-serif;"></div><br>
+        <div class="float-right" id="totalSilver" style="font-family: 'Signika Negative', sans-serif;"></div><br>
+        <div class="float-right" id="totalMoneyAtStake" style="font-family: 'Signika Negative', sans-serif;"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <% girvi.forEach(function(customer){ %>
+                <% if(customer.isDelivered==false){ %>
+                    <% totalGold+=customer.weightGold %>
+                    <% totalSilver+=customer.weightSilver %>
+                    <% totalMoneyAtStake+=customer.amount %>
+                    <div class="col-md-3">
+                        <div class="card text-center" style="margin-bottom:25px; text-transform:capitalize;">
+                            <div class="card-header bg-primary"><h5 style="color:white"><%= customer.name %></h5></div>
+                            <div class="card-body"><h6>Item type: <%= customer.item.toUpperCase() %></h6></div>
+                            <div class="card-footer">
+                                <p>Submitted On:</p>
+                                <%= customer.date.getFullYear() +"/" + (parseInt(customer.date.getMonth()) + 1) + "/" +customer.date.getDate() %>
+                                <a href="/shop/<%= customer._id %>" style="text-decoration:none"><button class="btn btn-outline-info btn-sml btn-block">More Info..</button></a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+    </div>
+    <script>
+        document.getElementById("totalGold").innerHTML="Total Gold as collateral: " + (<%= totalGold %>).toFixed(2) +" Grams";
+        document.getElementById("totalSilver").innerHTML="Total Silver as collateral: " + (<%= totalSilver %>).toFixed(2) +" Grams";
+        document.getElementById("totalMoneyAtStake").innerHTML= "Total Money at stake: ₹" +<%= totalMoneyAtStake %>;
+    </script>
+<% include partials/footer.ejs %>

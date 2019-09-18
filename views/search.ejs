@@ -1,0 +1,14 @@
+<% include partials/header.ejs %>
+<div class="container mt-3 " style="color:white !important;">
+    <h1 class="text-center mb-4">Search a Girvi</h1>
+    <div class="container" style="width:60%;">
+        <form action="/search" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <button class="btn btn-primary btn-block" type="Submit">Search</button>
+        </form>
+    </div>
+</div>
+<% include partials/footer.ejs %>
