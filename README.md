@@ -22,7 +22,7 @@ this shall install both Nodejs and npm.
 
 ```sudo apt-get install mongodb```
 
-4. Go to the clone's folder and run command `npm install` to install all node-modules(dependencies) mentioned in the JSON file.
+4.Go to the clone's folder and run command `npm install` to install all node-modules(dependencies) mentioned in the JSON file.
 
 ## Using the Application
 
