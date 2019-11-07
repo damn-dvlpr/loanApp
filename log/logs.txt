@@ -1,0 +1,10 @@
+Thu Nov 07 2019 22:45:41 GMT+0530 (IST) GET /shop/new 
+Thu Nov 07 2019 22:45:41 GMT+0530 (IST) GET /shop/js/bootstrap.js 
+Thu Nov 07 2019 22:45:41 GMT+0530 (IST) GET /shop/js/bootstrap.js 
+Thu Nov 07 2019 22:46:05 GMT+0530 (IST) POST /shop 
+Thu Nov 07 2019 22:46:06 GMT+0530 (IST) GET /shop 
+Thu Nov 07 2019 22:46:06 GMT+0530 (IST) GET /js/bootstrap.js 
+Thu Nov 07 2019 22:46:06 GMT+0530 (IST) GET /js/bootstrap.js 
+Thu Nov 07 2019 22:49:54 GMT+0530 (IST) GET /shop/new 
+Thu Nov 07 2019 22:49:55 GMT+0530 (IST) GET /shop/js/bootstrap.js 
+Thu Nov 07 2019 22:49:55 GMT+0530 (IST) GET /shop/js/bootstrap.js 

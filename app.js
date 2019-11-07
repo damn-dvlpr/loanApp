@@ -5,12 +5,28 @@ var bodyParser=require("body-parser");
 const fmt = require('indian-number-format');
 var methodOverride=require("method-override");
 var mongoose=require("mongoose");
+const fs=require("file-system");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/views'));
 app.use(methodOverride('_method'));
+app.use(function(req,res,next){
+    var date=Date(Date.now()).toString();
+    console.log(date);
+    // if(req.originalUrl=="/shop"&&req.method=="POST"){
+    //     console.log(res.body.returnedData);
+    // }
+    fs.appendFile('./log/logs.txt',
+    date + ` ${req.method} ${req.originalUrl} \n`
+    , function(err) {
+        if(!err){
+            next();
+        }
+        else console.log(err);
+    });
+});
 
-mongoose.connect("mongodb://localhost/shop");
+mongoose.connect("mongodb://localhost:27017/shop");
 
 //MONGOOSE SCHEMA
 
@@ -125,6 +141,7 @@ app.post("/shop",function(req,res){
       if(err){
           console.log(err);
       }else{
+          req.body.returnedData=returnedData;
           console.log(returnedData);
           console.log("New Girvi Created");
           res.redirect("/shop");
