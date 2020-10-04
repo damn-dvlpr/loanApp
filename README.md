@@ -1,3 +1,5 @@
+README in: [Spanish](./README-ES.md)
+
 # Loan Application
 This is a full stack app which aims to digitalise the loan giving service used by numerous jewellers and bankers.
 It contains the data of all customers, and maintains a passbook for every collateral in the shop.
