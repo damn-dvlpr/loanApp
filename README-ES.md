@@ -1,5 +1,5 @@
 # Loan Application
-Esto es un aplicación full stack que apunta a digitalizar los servicios de prestamos usados por numerosos joyeros y banqueros.
+Esta es un aplicación full stack que apunta a digitalizar los servicios de prestamos usados por numerosos joyeros y banqueros.
 Contiene los datos de todos los clientes, y mantiene una libreta para cada garantia dentro de la tienda.
 Calcula automaticamente los intereses a pagar por el cliente en base al numero de dias transucrridos y al porcentaje de interes aplicable.
 También mantiene varias estadisticas en beneficio del propietario.
