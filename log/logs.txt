@@ -511,3 +511,10 @@ Tue Oct 06 2020 20:58:20 GMT+0530 (India Standard Time) GET /shop/new
 Tue Oct 06 2020 20:58:20 GMT+0530 (India Standard Time) GET /public/css/bootstrap.min.css.map 
 Tue Oct 06 2020 21:13:05 GMT+0530 (India Standard Time) GET /shop/new 
 Tue Oct 06 2020 21:13:06 GMT+0530 (India Standard Time) GET /public/css/bootstrap.min.css.map 
+Wed Oct 07 2020 00:08:45 GMT+0530 (India Standard Time) GET / 
+Wed Oct 07 2020 00:08:45 GMT+0530 (India Standard Time) GET /shop 
+Wed Oct 07 2020 00:08:45 GMT+0530 (India Standard Time) GET /favicon.ico 
+Wed Oct 07 2020 00:08:47 GMT+0530 (India Standard Time) GET /sw.js 
+Wed Oct 07 2020 00:08:48 GMT+0530 (India Standard Time) GET /shop/new 
+Wed Oct 07 2020 00:08:49 GMT+0530 (India Standard Time) GET /sw.js 
+Wed Oct 07 2020 00:08:50 GMT+0530 (India Standard Time) GET /sw.js 
