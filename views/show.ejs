@@ -1,118 +1,135 @@
 <% include partials/header.ejs %>
-    <div class="container" style="width:60%;min-height:100%;">
-        <table class="table table-bordered text-center" style="background-color:white;margin-top:50px;text-transform:capitalize;">
-            <thead>
-                <tr>
-                    <th colspan="2"><h2 id="customerName" style="font-family: 'Signika Negative', sans-serif;"><%= girvi.name %>'s Details</h2></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th style="width:50%">Address:</th>
-                    <th><%= girvi.address %></th>
-                </tr>
-                <tr>
-                    <th style="width:50%">Phone Number:</th>
-                    <th><%= girvi.phone %></th>
-                </tr>
-                <tr>
-                    <th style="width:50%">Girvi Item:</th>
-                    <th><%= girvi.item %></th>
-                </tr>
-                <tr>
-                    <th>Submitted on:</th>
-                    <th><%=girvi.date.getFullYear() +"/" + (parseInt(girvi.date.getMonth()) + 1) + "/" +girvi.date.getDate() %></th>
-                </tr>
-                <tr>
-                    <th>Metal:</th>
-                    <th><%= girvi.metal %></th>
-                </tr>
-                <tr>
-                    <th>Interest Rate:</th>
-                    <th><%= girvi.rate %>%</th>
-                </tr>
-                <tr>
-                    <th>Time Elapsed:</th>
-                    <th><%= months %> <%= days %></th>
-                </tr>
-                <tr>
-                    <th>Weight of Gold(in grams):</th>
-                    <th><%= girvi.weightGold %> grams</th>
-                </tr>
-                <tr>
-                    <th>Weight of Silver(in grams):</th>
-                    <th><%= girvi.weightSilver %> grams</th>
-                </tr>
-                <tr class="table-warning">
-                    <th>Amount given:</th>
-                    <th>₹<%= amount %></th>
-                </tr>
-                <tr id="interest" class="table-success">
-                    <th>Simple Interest:</th>
-                    <th>₹<%= simpleInterest %></th>
-                </tr>
-                <tr>
-                        <th colspan="2" style=" padding-bottom:0">
-                            <h6 style="font-family: 'Signika Negative', sans-serif;display:inline-block">Additional Information:</h6>
-                            <p style="font-weight:100;font-size:15px;display:inline-block;"><%= girvi.additionalInfo %></p>
-                        </th>
-                </tr>
-            </tbody>
-        </table>
-        <form action="/shop/<%= girvi._id%>?_method=delete" method="POST">
-            <button class="btn btn-primary btn-block" type="submit">Delete</button>
-        </form>
-        <div class="container" id="toggleButtons" style="height:50px;">
-            <div class="float-right mt-3">
-                    <a href="/shop/<%= girvi._id %>/passbook/new"><button class="btn btn-success btn-sm">Make passbook entry</button></a>
-            </div>
-            <div class="float-left mt-3">
-                <form action="/shop/<%= girvi._id %>/delivered" method="POST">
-                    <button class="btn btn-danger btn-sm">Mark Delivered</button>
-                </form>
-            </div>
+<div class="container" style="width:60%;min-height:100%;">
+    <table class="table table-bordered text-center"
+        style="background-color:white;margin-top:50px;text-transform:capitalize;">
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <h2 id="customerName" style="font-family: 'Signika Negative', sans-serif;"><%= girvi.name %>'s
+                        Details</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th style="width:50%">Address:</th>
+                <th><%= girvi.address %></th>
+            </tr>
+            <tr>
+                <th style="width:50%">Phone Number:</th>
+                <th><%= girvi.phone %></th>
+            </tr>
+            <tr>
+                <th style="width:50%">Girvi Item:</th>
+                <th><%= girvi.item %></th>
+            </tr>
+            <tr>
+                <th>Submitted on:</th>
+                <th><%=girvi.date.getFullYear() +"/" + (parseInt(girvi.date.getMonth()) + 1) + "/" +girvi.date.getDate() %>
+                </th>
+            </tr>
+            <tr>
+                <th>Metal:</th>
+                <th><%= girvi.metal %></th>
+            </tr>
+            <tr>
+                <th>Interest Rate:</th>
+                <th><%= girvi.rate %>%</th>
+            </tr>
+            <tr>
+                <th>Time Elapsed:</th>
+                <th><%= months %> <%= days %></th>
+            </tr>
+            <% if (girvi.weightGold) {%>
+            <tr>
+                <th>Weight of Gold(in grams):</th>
+                <th><%= girvi.weightGold %> grams</th>
+            </tr>
+            <% } %>
+            <% if (girvi.weightSilver) {%>
+            <tr>
+                <th>Weight of Silver(in grams):</th>
+                <th><%= girvi.weightSilver %> grams</th>
+            </tr>
+            <% } %>
+            <tr class="table-warning">
+                <th>Amount given:</th>
+                <th>₹<%= amount %></th>
+            </tr>
+            <tr id="interest" class="table-success">
+                <th>Simple Interest:</th>
+                <th>₹<%= simpleInterest %></th>
+            </tr>
+            <tr>
+                <th colspan="2" style=" padding-bottom:0">
+                    <h6 style="font-family: 'Signika Negative', sans-serif;display:inline-block">Additional Information:
+                    </h6>
+                    <p style="font-weight:100;font-size:15px;display:inline-block;"><%= girvi.additionalInfo %></p>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <form action="/shop/<%= girvi._id%>?_method=delete" method="POST">
+        <button class="btn btn-primary btn-block" type="submit">Delete</button>
+    </form>
+    <% if (girvi.isDelivered === true) { %>
+    <div class="text-center mt-3 printReciept">
+        <a href="/printReciept/<%= id %>"><button class="btn btn-info btn-sm">Print Reciept</button></a>
+    </div>
+    <% } %>
+    <div class="container" id="toggleButtons" style="height:50px;">
+        <div class="float-right mt-3">
+            <a href="/shop/<%= girvi._id %>/passbook/new"><button class="btn btn-success btn-sm">Make passbook
+                    entry</button></a>
         </div>
-        <div class="card card-body bg-light mt-3">
-            <div class="row">
-                <h2 class="text-center" style="font-family: 'Signika Negative', sans-serif;width:100%;margin-bottom: 12px;">PassBook</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h5 class="text-center" style="font-family: 'Signika Negative', sans-serif;">Details:</h5>
-                </div>
-                <div class="col-md-3">
-                    <h5 class="text-center" style="font-family: 'Signika Negative', sans-serif;">Amount Deposit:</h5>
-                </div>
-                <div class="col-md-3">
-                    <h5 class="text-center" style="font-family: 'Signika Negative', sans-serif;">Date:</h5>
-                </div>
-            </div>
-            <% girvi.passbookInformation.forEach(function(comment){ %>
-                <div class="row text-center">
-                    <div class="col-md-6">
-                        <p><%= comment.description %></p>
-                    </div>
-                    <div class="col-md-3">
-                        <!-- <h5 style="font-family: 'Signika Negative', sans-serif;"></h5> -->
-                        <span style="color:green;">₹<strong><%= comment.amountDeposit %></strong></span>
-                    </div>
-                    <div class="col-md-3">
-                        <% var dateShow=comment.date.getFullYear() +"/" + (parseInt(comment.date.getMonth()) + 1) + "/" +comment.date.getDate()  %>
-                        <!-- <h5 style="font-family: 'Signika Negative', sans-serif;">Deposit Date:</h5> -->
-                        <span><%= dateShow %></span>
-                    </div>
-                </div>
-                <hr>
-            <% }); %>
+        <div class="float-left mt-3">
+            <form action="/shop/<%= girvi._id %>/delivered" method="POST">
+                <button class="btn btn-danger btn-sm">Mark Delivered</button>
+            </form>
         </div>
     </div>
-    <script>
-        if(<%= girvi.isDelivered %> ==true){
-            document.getElementById("customerName").style.textDecorationLine="line-through";
-            document.getElementById("customerName").style.color="red";
-            document.getElementById("toggleButtons").style.display="none";
-            document.getElementById("interest").style.display="none";
-            document.getElementsByTagName("p")[0].innerHTML="<h6>Delivered On <strong><%= girvi.deliveryDate.toString().slice(4,15) %></strong></h6>";
-        }
-    </script>
+    <div class="card card-body bg-light mt-3">
+        <div class="row">
+            <h2 class="text-center" style="font-family: 'Signika Negative', sans-serif;width:100%;margin-bottom: 12px;">
+                PassBook</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-center" style="font-family: 'Signika Negative', sans-serif;">Details:</h5>
+            </div>
+            <div class="col-md-3">
+                <h5 class="text-center" style="font-family: 'Signika Negative', sans-serif;">Amount Deposit:</h5>
+            </div>
+            <div class="col-md-3">
+                <h5 class="text-center" style="font-family: 'Signika Negative', sans-serif;">Date:</h5>
+            </div>
+        </div>
+        <% girvi.passbookInformation.forEach(function(comment){ %>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <p><%= comment.description %></p>
+            </div>
+            <div class="col-md-3">
+                <!-- <h5 style="font-family: 'Signika Negative', sans-serif;"></h5> -->
+                <span style="color:green;">₹<strong><%= comment.amountDeposit %></strong></span>
+            </div>
+            <div class="col-md-3">
+                <% var dateShow=comment.date.getFullYear() +"/" + (parseInt(comment.date.getMonth()) + 1) + "/" +comment.date.getDate()  %>
+                <!-- <h5 style="font-family: 'Signika Negative', sans-serif;">Deposit Date:</h5> -->
+                <span><%= dateShow %></span>
+            </div>
+        </div>
+        <hr>
+        <% }); %>
+    </div>
+</div>
+<script>
+    if (<%= girvi.isDelivered %> == true) {
+        document.getElementById("customerName").style.textDecorationLine = "line-through";
+        document.getElementById("customerName").style.color = "red";
+        document.getElementById("toggleButtons").style.display = "none";
+        document.getElementById("interest").style.display = "none";
+        document.getElementsByTagName("p")[0].innerHTML = "<h6>Delivered On <strong><%= girvi.deliveryDate.toString().slice(4,15) %></strong></h6>";
+    }
+</script>
 <% include partials/footer.ejs %>

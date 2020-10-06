@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Reciept
+    </title>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <div class="container" style="width:60%;min-height:100%;">
+        <table class="table table-bordered text-center"
+            style="background-color:white;margin-top:50px;text-transform:capitalize;">
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        <h2 id="customerName" style="font-family: 'Signika Negative', sans-serif;"><%= girvi.name %>'s
+                            Details</h2>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th style="width:50%">Address:</th>
+                    <th><%= girvi.address %></th>
+                </tr>
+                <tr>
+                    <th style="width:50%">Phone Number:</th>
+                    <th><%= girvi.phone %></th>
+                </tr>
+                <tr>
+                    <th style="width:50%">Girvi Item:</th>
+                    <th><%= girvi.item %></th>
+                </tr>
+                <tr>
+                    <th>Submitted on:</th>
+                    <th><%=girvi.date.getFullYear() +"/" + (parseInt(girvi.date.getMonth()) + 1) + "/" +girvi.date.getDate() %>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Metal:</th>
+                    <th><%= girvi.metal %></th>
+                </tr>
+                <tr>
+                    <th>Interest Rate:</th>
+                    <th><%= girvi.rate %>%</th>
+                </tr>
+                <tr>
+                    <th>Time Elapsed:</th>
+                    <th><%= months %> <%= days %></th>
+                </tr>
+                <% if (girvi.weightGold) {%>
+                <tr>
+                    <th>Weight of Gold(in grams):</th>
+                    <th><%= girvi.weightGold %> grams</th>
+                </tr>
+                <% } %>
+                <% if (girvi.weightSilver) {%>
+                <tr>
+                    <th>Weight of Silver(in grams):</th>
+                    <th><%= girvi.weightSilver %> grams</th>
+                </tr>
+                <% } %>
+                <tr class="table-info">
+                    <th>Total Amount:</th>
+                    <th>₹<%= totalAmount %></th>
+                </tr <tr>
+                <th colspan="2">
+                    <p style="font-weight:100;font-size:15px;display:inline-block;">
+                    <h6>Delivery Date: <strong><%= girvi.deliveryDate.toString().slice(4,15) %></strong></h6>
+                    </p>
+                </th>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center mt-3 mb-3">
+            <button class="btn btn-info btn-sm printReciept">Print Reciept</button>
+        </div>
+    </div>
+    <script>
+        const printBtn = document.querySelector('.printReciept');
+        if (printBtn) {
+            printBtn.addEventListener('click', () => {
+                printBtn.style.display = 'none';
+                window.print();
+                printBtn.style.display = 'inline-block';
+            })
+        }
+    </script>
+</body>
+
+</html>
