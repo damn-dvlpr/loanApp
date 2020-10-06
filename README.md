@@ -26,15 +26,24 @@ this shall install both Nodejs and npm.
 
 4.Go to the clone's folder and run command `npm install` to install all node-modules(dependencies) mentioned in the JSON file.
 
+5.Make a folder called config in the base directory and put a file called config.env with the following :
+```
+NODE_ENV=development
+PORT=3000
+DATABASE_LOCAL=mongodb://localhost:27017/shop
+DATABASE_CLOUD=
+DATABASE_PASSWORD=
+```
+
 ## Using the Application
 
-1.Mongodb needs mongod service running, hence in a terminal, run the following command:
+1.Mongodb needs mongod service running,if already running then ignore this, else in a terminal, run the following command:
 
 ``` sudo mongod ```
 
 2.Goto the clone's folder and run the application using the following command:
 
-``` node app.js ```
+``` node server.js ```
 
 3.The local server will start at port 3000, hence open your browser and goto the folowing URL:
 
