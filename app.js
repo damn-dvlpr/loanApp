@@ -16,13 +16,17 @@ app.use(function(req,res,next){
     // if(req.originalUrl=="/shop"&&req.method=="POST"){
     //     console.log(res.body.returnedData);
     // }
-    fs.appendFile('./log/logs.txt',
+    fs.appendFile(__dirname + '/log/logs.txt',
     date + ` ${req.method} ${req.originalUrl} \n`
     , function(err) {
         if(!err){
             next();
         }
-        else console.log(err);
+        else{ 
+		res.send(err);
+		console.log(err);
+		next();
+	}
     });
 });
 
@@ -73,13 +77,13 @@ app.get("/shop",function(req,res){
         if(err){
             console.log(err);
         }else{
-            res.render("shop.ejs",{ girvi:returnedData});
+            res.render(__dirname + "/views/shop.ejs",{ girvi:returnedData});
         }
     });
 });
 
 app.get("/shop/new",function(req,res){
-    res.render("new.ejs");
+    res.render(__dirname + "/views/new.ejs");
 });
 
 app.get("/shop/:id",function(req,res){
@@ -94,17 +98,17 @@ app.get("/shop/:id",function(req,res){
             var amount=fmt.format(foundData.amount);
             // var testd=days(new Date(foundData.date), new Date('2018-11-03'));     ////////////////////////
             // console.log((foundData.rate/3000)*foundData.amount*testd);            ////////////////////////
-            res.render("show.ejs",{girvi:foundData, months:months, days:day, simpleInterest:simpleInterest, amount:amount});
+            res.render(__dirname + "/views/show.ejs",{girvi:foundData, months:months, days:day, simpleInterest:simpleInterest, amount:amount});
         }
     });
 });
 
 app.get("/shop/:id/passbook/new",function(req,res){
-    res.render("passbookForm.ejs",{id:req.params.id});
+    res.render(__dirname + "/views/passbookForm.ejs",{id:req.params.id});
 });
 
 app.get("/search",function(req,res){
-    res.render("search.ejs");
+    res.render(__dirname + "/views/search.ejs");
 });
 
 app.post("/search",function(req,res){
@@ -116,7 +120,7 @@ app.post("/search",function(req,res){
       if(err){
           console.log(err);
       }else{
-        res.render("results.ejs", {girvi:returnedData});
+        res.render(__dirname + "/views/results.ejs", {girvi:returnedData});
       }
    }).sort({date:1}); 
 });
