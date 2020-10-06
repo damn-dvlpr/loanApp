@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label for="metal">Metal:</label>
                 <select class="form-control" id="metal" name="metal" form="create" onchange="myFunction()">
-                    <option value="Gold">Gold</option>
+                    <option value="Gold" selected>Gold</option>
                     <option value="Silver">Silver</option>
                     <option value="Gold+Silver">Gold+Silver</option>
                 </select>
@@ -31,7 +31,7 @@
                 <label for="item">Item type:</label>
                 <textarea class="form-control" id="item" name="item" required></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="goldOption">
                 <label for="weightGold">Weight of Gold(in grams):</label>
                 <input type="number" class="form-control" id="weightGold" name="weightGold" step="0.01" required>
             </div>
@@ -67,9 +67,18 @@
 </div>
 <script>
     //script to toggle gold+silver case and show the weight of silver form
-    function myFunction(){
-        if(document.getElementById("metal").value=="Gold+Silver"){
-            document.getElementById("optionalForm").style.display="block";
+    const goldOption = document.getElementById("goldOption");
+    const silverOption = document.getElementById("optionalForm");
+    function myFunction() {
+        if (document.getElementById("metal").value == "Gold+Silver") {
+            silverOption.style.display = "block";
+            goldOption.style.display = "block";
+        } else if (document.getElementById("metal").value == "Silver") {
+            silverOption.style.display = "block";
+            goldOption.style.display = "none";
+        } else {
+            silverOption.style.display = "none";
+            goldOption.style.display = "block";
         }
     }
 </script>
