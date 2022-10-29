@@ -1,5 +1,5 @@
 const express = require('express');
-
+const express = require('express');
 const viewsController = require('../controllers/viewsController');
 const searchController = require('../controllers/searchController');
 
