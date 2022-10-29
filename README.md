@@ -10,7 +10,7 @@ This also maintains various stats for the benefit of the Proprietor.
 
 !["Information_ss](views/ss/ss_2.png)
 
-## Installation
+## Installation 
 
 1.Clone/download this repository.
 
