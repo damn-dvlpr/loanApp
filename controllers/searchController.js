@@ -1,6 +1,6 @@
 const Girvi = require('../models/girviModel');
 
-// Searches for a Girvi
+// Searches for a Girvi amount
 exports.findGirvi = (req, res) => {
 	Girvi.find(
 		{
